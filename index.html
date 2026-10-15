@@ -179,7 +179,7 @@
       <div class="table-wrap">
         <table class="ads-table" id="activeAdsTable"></table>
       </div>
-      <p class="section-note">Números acumulados desde o início da veiculação de cada conjunto até 15/10/2026, não apenas o mês corrente. Conjuntos ativos no momento.</p>
+      <p class="section-note">Números acumulados desde o início da veiculação até 15/10/2026, não apenas o mês corrente. Apenas conjuntos e anúncios ativos no momento; no topo de funil, o detalhamento é por anúncio.</p>
     </section>
   </div>
 
@@ -504,6 +504,7 @@ function drawCharts(entries){
 render(ENTRIES);
 
 const CREATIVES_TOPO = [
+  { src: 'assets/creatives/topo-susi-video.jpg', label: 'Vídeo institucional — Susi, "começa bem antes de mostrar"', badge: 'VÍDEO' },
   { src: 'assets/creatives/topo-familia-pet.jpg', label: 'Estático — família e pet, "faro apurado de quem realmente conhece Bragança"' }
 ];
 
@@ -529,6 +530,8 @@ populateCreatives(CREATIVES_FUNDO, 'creativesFundo', 'creativesFundoSection');
 populateCreatives(CREATIVES_CAPTACAO, 'creativesCaptacao', 'creativesCaptacaoSection');
 
 const ACTIVE_ADS = [
+  { name: 'Topo de funil — vídeo Susi', conversas: null, custo: null, alcance: 36162, impressoes: 94657, valor: 252.99 },
+  { name: 'Topo de funil — imagem família', conversas: null, custo: null, alcance: 36871, impressoes: 80959, valor: 178.29 },
   { name: 'MCMV', conversas: 182, custo: 5.88, alcance: 10679, impressoes: 57764, valor: 1070.47 },
   { name: 'Captação para venda — Lucas', conversas: 60, custo: 6.38, alcance: 10574, impressoes: 28268, valor: 382.77 },
   { name: 'Captação para locação — Farma', conversas: null, custo: null, alcance: null, impressoes: null, valor: 0 }
@@ -538,7 +541,7 @@ function populateActiveAds(){
   const table = document.getElementById('activeAdsTable');
   table.innerHTML = `
     <tr>
-      <th>Conjunto de anúncios</th><th>Conversas</th><th>Custo por conversa</th><th>Alcance</th><th>Impressões</th><th>Valor gasto</th>
+      <th>Campanha / conjunto</th><th>Conversas</th><th>Custo por conversa</th><th>Alcance</th><th>Impressões</th><th>Valor gasto</th>
     </tr>
     ${ACTIVE_ADS.map(a => `
     <tr>
