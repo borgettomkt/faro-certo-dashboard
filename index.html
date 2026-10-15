@@ -97,6 +97,7 @@
   table.ads-table td{padding:10px 14px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;}
   table.ads-table tr:last-child td{border-bottom:none;}
   table.ads-table td.name{color:var(--gold);font-weight:500;}
+  table.ads-table tr.group td{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-muted);background:var(--paper-accent);padding:8px 14px;}
 
   footer.note{font-size:12px;color:var(--ink-faint);border-top:1px solid var(--line);padding-top:16px;}
 
@@ -175,11 +176,11 @@
     </section>
 
     <section id="activeAdsSection" style="display:none;">
-      <p class="section-label">Anúncios ativos — detalhamento por conjunto</p>
+      <p class="section-label">Anúncios ativos — detalhamento por anúncio</p>
       <div class="table-wrap">
         <table class="ads-table" id="activeAdsTable"></table>
       </div>
-      <p class="section-note">Números acumulados desde o início da veiculação até 15/10/2026, não apenas o mês corrente. Apenas conjuntos e anúncios ativos no momento; no topo de funil, o detalhamento é por anúncio.</p>
+      <p class="section-note">Números acumulados desde o início da veiculação até 15/10/2026, não apenas o mês corrente. Apenas anúncios ativos no momento. Na captação, os valores são o total do conjunto.</p>
     </section>
   </div>
 
@@ -530,28 +531,38 @@ populateCreatives(CREATIVES_FUNDO, 'creativesFundo', 'creativesFundoSection');
 populateCreatives(CREATIVES_CAPTACAO, 'creativesCaptacao', 'creativesCaptacaoSection');
 
 const ACTIVE_ADS = [
-  { name: 'Topo de funil — vídeo Susi', conversas: null, custo: null, alcance: 36162, impressoes: 94657, valor: 252.99 },
-  { name: 'Topo de funil — imagem família', conversas: null, custo: null, alcance: 36871, impressoes: 80959, valor: 178.29 },
-  { name: 'MCMV', conversas: 182, custo: 5.88, alcance: 10679, impressoes: 57764, valor: 1070.47 },
-  { name: 'Captação para venda — Lucas', conversas: 60, custo: 6.38, alcance: 10574, impressoes: 28268, valor: 382.77 },
-  { name: 'Captação para locação — Farma', conversas: null, custo: null, alcance: null, impressoes: null, valor: 0 }
+  { group: 'Topo de funil' },
+  { name: 'Vídeo Susi', conversas: null, custo: null, alcance: 36162, impressoes: 94657, valor: 252.99 },
+  { name: 'Imagem família', conversas: null, custo: null, alcance: 36871, impressoes: 80959, valor: 178.29 },
+  { group: 'Fundo de funil — MCMV (Minha Casa Minha Vida)' },
+  { name: 'Vídeo Samuel', conversas: 3, custo: 3.25, alcance: 275, impressoes: 417, valor: 9.75 },
+  { name: 'Vídeo — dúvida entre comprar ou alugar', conversas: 121, custo: 4.41, alcance: 6829, impressoes: 27314, valor: 533.27 },
+  { name: 'Carrossel — parcela menor que o aluguel', conversas: 8, custo: 4.68, alcance: 1090, impressoes: 2248, valor: 37.46 },
+  { group: 'Captação de proprietários (totais por conjunto)' },
+  { name: 'Venda — conjunto Lucas', conversas: 60, custo: 6.38, alcance: 10574, impressoes: 28268, valor: 382.77 },
+  { name: 'Locação — conjunto Farma', conversas: null, custo: null, alcance: null, impressoes: null, valor: 0 }
 ];
 
 function populateActiveAds(){
   const table = document.getElementById('activeAdsTable');
   table.innerHTML = `
     <tr>
-      <th>Campanha / conjunto</th><th>Conversas</th><th>Custo por conversa</th><th>Alcance</th><th>Impressões</th><th>Valor gasto</th>
+      <th>Anúncio</th><th>Conversas</th><th>Custo por conversa</th><th>Alcance</th><th>Impressões</th><th>CPM</th><th>Valor gasto</th>
     </tr>
-    ${ACTIVE_ADS.map(a => `
+    ${ACTIVE_ADS.map(a => {
+      if (a.group) return `<tr class="group"><td colspan="7">${a.group}</td></tr>`;
+      const cpm = a.impressoes ? a.valor / a.impressoes * 1000 : null;
+      return `
     <tr>
       <td class="name">${a.name}</td>
       <td>${fmtNum(a.conversas)}</td>
       <td>${fmtCur(a.custo)}</td>
       <td>${fmtNum(a.alcance)}</td>
       <td>${fmtNum(a.impressoes)}</td>
+      <td>${fmtCur(cpm)}</td>
       <td>${fmtCur(a.valor)}</td>
-    </tr>`).join('')}
+    </tr>`;
+    }).join('')}
   `;
   document.getElementById('activeAdsSection').style.display = '';
 }
