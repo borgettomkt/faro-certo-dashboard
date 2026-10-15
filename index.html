@@ -547,7 +547,7 @@ function populateActiveAds(){
   const table = document.getElementById('activeAdsTable');
   table.innerHTML = `
     <tr>
-      <th>Anúncio</th><th>Conversas</th><th>Custo por conversa</th><th>Alcance</th><th>Impressões</th><th>CPM</th><th>Valor gasto</th>
+      <th>Anúncio</th><th>Conversas</th><th>CPL</th><th>Alcance</th><th>Impressões</th><th>CPM</th><th>Valor gasto</th>
     </tr>
     ${ACTIVE_ADS.map(a => {
       if (a.group) return `<tr class="group"><td colspan="7">${a.group}</td></tr>`;
