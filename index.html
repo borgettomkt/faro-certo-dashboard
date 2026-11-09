@@ -180,7 +180,7 @@
       <div class="table-wrap">
         <table class="ads-table" id="activeAdsTable"></table>
       </div>
-      <p class="section-note">Números acumulados desde o início da veiculação até 15/10/2026, não apenas o mês corrente. Apenas anúncios ativos no momento. Na captação, os valores são o total do conjunto.</p>
+      <p class="section-note">Números acumulados desde o início da veiculação até 09/11/2026, não apenas o mês corrente. Apenas anúncios ativos no momento.</p>
     </section>
   </div>
 
@@ -290,6 +290,16 @@ const ENTRIES = [
     captleads: 38, captcpl: 8.85, captvalor: 336.37,
     captvendaleads: 30, captvendacpl: 6.62, captvendavalor: 198.68,
     captlocleads: 8, captloccpl: 17.21, captlocvalor: 137.69
+  },
+  {
+    monthKey: '2026-10',
+    alcance: 48264, cpm: 2.05, valortopo: 309.88,
+    leads: 160, cpl: 4.77, valorfundo: 763.99,
+    fb: 7200, fbgrowth: 14.29,
+    ig: 35450, iggrowth: 7.91,
+    captleads: 35, captcpl: 8.57, captvalor: 299.78,
+    captvendaleads: 30, captvendacpl: 6.79, captvendavalor: 203.81,
+    captlocleads: 5, captloccpl: 19.19, captlocvalor: 95.97
   }
 ];
 
@@ -505,19 +515,19 @@ function drawCharts(entries){
 render(ENTRIES);
 
 const CREATIVES_TOPO = [
-  { src: 'assets/creatives/topo-susi-video.jpg', label: 'Vídeo institucional — Susi, "começa bem antes de mostrar"', badge: 'VÍDEO' },
-  { src: 'assets/creatives/topo-familia-pet.jpg', label: 'Estático — família e pet, "faro apurado de quem realmente conhece Bragança"' }
+  { src: 'assets/creatives/topo-video-escritorio.jpg', label: 'Vídeo institucional — equipe no escritório', badge: 'VÍDEO' },
+  { src: 'assets/creatives/correspondente-caixa.jpg', label: 'Vídeo — correspondente Caixa', badge: 'VÍDEO' },
+  { src: 'assets/creatives/topo-parodia-ipiranga.jpg', label: 'Vídeo — paródia Ipiranga', badge: 'VÍDEO' }
 ];
 
 const CREATIVES_FUNDO = [
-  { src: 'assets/creatives/fundo-mcmv-video-samuel.jpg', label: 'MCMV — vídeo com Samuel', badge: 'VÍDEO' },
-  { src: 'assets/creatives/fundo-mcmv-video-duvida.jpg', label: 'MCMV — vídeo "Se você está em dúvida entre comprar um imóvel ou alugar"', badge: 'VÍDEO' },
-  { src: 'assets/creatives/fundo-mcmv-carrossel-parcela.jpg', label: 'MCMV — carrossel "Parcela menor que o aluguel" (WhatsApp)', badge: 'CARROSSEL' }
+  { src: 'assets/creatives/fundo-aguas-claras.jpg', label: 'Jardim Águas Claras — vídeo "Simule sua parcela no WhatsApp"', badge: 'VÍDEO' },
+  { src: 'assets/creatives/correspondente-caixa.jpg', label: 'MCMV — vídeo correspondente Caixa, "Parcela menor que o aluguel"', badge: 'VÍDEO' }
 ];
 
 const CREATIVES_CAPTACAO = [
-  { src: 'assets/creatives/captacao-venda-lucas.jpg', label: 'Captação para venda — vídeo com Lucas, "Seu imóvel tá parado?"', badge: 'VÍDEO' },
-  { src: 'assets/creatives/captacao-locacao-farma.jpg', label: 'Captação para locação — vídeo com Farma', badge: 'VÍDEO' }
+  { src: 'assets/creatives/captacao-venda-farma.jpg', label: 'Captação para venda — vídeo com Farma, "Coloque seu imóvel para vender"', badge: 'VÍDEO' },
+  { src: 'assets/creatives/captacao-locacao-farma.jpg', label: 'Captação para locação — vídeo com Farma, "Temos inquilinos para seu imóvel"', badge: 'VÍDEO' }
 ];
 
 function populateCreatives(list, wrapId, sectionId){
@@ -532,15 +542,15 @@ populateCreatives(CREATIVES_CAPTACAO, 'creativesCaptacao', 'creativesCaptacaoSec
 
 const ACTIVE_ADS = [
   { group: 'Topo de funil' },
-  { name: 'Vídeo Susi', conversas: null, custo: null, alcance: 36162, impressoes: 94657, valor: 252.99 },
-  { name: 'Imagem família', conversas: null, custo: null, alcance: 36871, impressoes: 80959, valor: 178.29 },
-  { group: 'Fundo de funil — MCMV (Minha Casa Minha Vida)' },
-  { name: 'Vídeo Samuel', conversas: 3, custo: 3.25, alcance: 275, impressoes: 417, valor: 9.75 },
-  { name: 'Vídeo — dúvida entre comprar ou alugar', conversas: 121, custo: 4.41, alcance: 6829, impressoes: 27314, valor: 533.27 },
-  { name: 'Carrossel — parcela menor que o aluguel', conversas: 8, custo: 4.68, alcance: 1090, impressoes: 2248, valor: 37.46 },
-  { group: 'Captação de proprietários (totais por conjunto)' },
-  { name: 'Venda — conjunto Lucas', conversas: 60, custo: 6.38, alcance: 10574, impressoes: 28268, valor: 382.77 },
-  { name: 'Locação — conjunto Farma', conversas: null, custo: null, alcance: null, impressoes: null, valor: 0 }
+  { name: 'Vídeo institucional — escritório', conversas: null, custo: null, alcance: 119024, impressoes: 345364, valor: 546.15 },
+  { name: 'Vídeo correspondente Caixa', conversas: null, custo: null, alcance: 4496, impressoes: 5423, valor: 14.10 },
+  { name: 'Vídeo paródia Ipiranga', conversas: null, custo: null, alcance: 3365, impressoes: 4257, valor: 8.74 },
+  { group: 'Fundo de funil' },
+  { name: 'Jardim Águas Claras — vídeo', conversas: 81, custo: 2.85, alcance: 7070, impressoes: 18002, valor: 231.22 },
+  { name: 'MCMV — vídeo correspondente Caixa', conversas: 6, custo: 19.44, alcance: 2068, impressoes: 4833, valor: 116.62 },
+  { group: 'Captação de proprietários' },
+  { name: 'Venda — vídeo Farma', conversas: 17, custo: 8.33, alcance: 2719, impressoes: 6727, valor: 141.65 },
+  { name: 'Locação — vídeo Farma', conversas: 7, custo: 20.22, alcance: 3360, impressoes: 7731, valor: 141.53 }
 ];
 
 function populateActiveAds(){
